@@ -1,0 +1,23 @@
+language: generic
+
+sudo: required
+
+services:
+  - docker
+
+before_install:
+  - docker build -t mquintal/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run mquintal/react-test npm test -- --coverage
+
+after_success:
+  - docker build -t mquintal/multi-client ./client
+  - docker build -t mquintal/multi-nginx ./nginx
+  - docker build -t mquintal/multi-worker ./worker
+  - docker build -t mquintal/multi-server ./server
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push mquintal/multi-client
+  - docker push mquintal/multi-nginx
+  - docker push mquintal/multi-worker
+  - docker push mquintal/multi-server
