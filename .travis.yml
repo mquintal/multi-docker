@@ -21,3 +21,17 @@ after_success:
   - docker push mquintal/multi-nginx
   - docker push mquintal/multi-worker
   - docker push mquintal/multi-server
+
+deploy:
+  edge: true
+  provider: elasticbeanstalk
+  region: us-east-2
+  app: multi-docker
+  env: MultiDocker-env
+  bucket_name: elasticbeanstalk-us-east-2-567353390316
+  bucket_path: multi-docker
+  on:
+    branch: master
+  access_key_id: "$AWS_ACCESS_KEY"
+  secret_access_key: "$AWS_SECRET_KEY"
+
