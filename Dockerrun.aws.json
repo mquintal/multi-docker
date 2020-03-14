@@ -2,16 +2,11 @@
   "AWSEBDockerrunVersion": 2,
   "containerDefinitions": [
     {
-      "name": "nginx",
-      "image": "mquintal/mlti-nginx",
-      "essential": true,
-      "memory": 128,
-      "portMappings": [
-        {
-          "hostPort": 80,
-          "containerPort": 80
-        }
-      ]
+      "name": "client",
+      "image": "mquintal/mlti-client",
+      "hostname": "client",
+      "essential": false,
+      "memory": 128
     }
   ]
 }
