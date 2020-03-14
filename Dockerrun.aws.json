@@ -6,7 +6,13 @@
       "image": "mquintal/mlti-client",
       "hostname": "client",
       "essential": true,
-      "memory": 128
+      "memory": 256,
+      "portMappings": [
+        {
+            "containerPort": 3000,
+            "hostPort": 80
+        }
+      ]
     }
   ]
 }
