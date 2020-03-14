@@ -3,7 +3,7 @@
   "containerDefinitions": [
     {
       "name": "client",
-      "image": "mquintal/mlti-client",
+      "image": "mquintal/multi-client",
       "hostname": "client",
       "essential": true,
       "memory": 256,
